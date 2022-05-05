@@ -7,6 +7,7 @@ import { ItemTypes } from "./ItemTypes";
 const Wrapper = styled.div`
   border: 1px dashed gray;
   padding: 0.5rem 1rem;
+  margin: 5px;
   margin-bottom: 0.5rem;
   background-color: white;
   cursor: move;
