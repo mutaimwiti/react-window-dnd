@@ -60,7 +60,7 @@ const Grid = () => {
         columnCount={columnCount}
         rowCount={rowCount}
         columnWidth={150}
-        rowHeight={100}
+        rowHeight={60}
         height={290}
         width={700}
       >
