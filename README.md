@@ -1,6 +1,6 @@
 # react-window-dnd
 
-Combining react-window and react-dnd
+Optimal list and grid with react-window and react-dnd
 
 # codesandbox
 
