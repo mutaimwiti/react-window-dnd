@@ -1,22 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-import List from "./List";
-import Grid from "./Grid";
-
-function App() {
-  return (
-    <div className="App">
-      <DndProvider backend={HTML5Backend}>
-        <List />
-        <Grid />
-      </DndProvider>
-    </div>
-  );
-}
+import App from "./App";
 
 const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-ReactDOM.render(<App />, rootElement);
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

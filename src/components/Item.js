@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDrag, useDrop } from "react-dnd";
 
-import { ItemTypes } from "./ItemTypes";
+import { ItemTypes } from "../utils";
 
 const Wrapper = styled.div`
   border: 1px dashed gray;

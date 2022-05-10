@@ -1,13 +1,15 @@
 import { useDrop } from "react-dnd";
 import React, { useState } from "react";
 import update from "immutability-helper";
-import { FixedSizeList } from "react-window";
+import { FixedSizeGrid } from "react-window";
 
 import Item from "./Item";
-import { ITEMS } from "./utils";
-import { ItemTypes } from "./ItemTypes";
+import { ITEMS, ItemTypes } from "../utils";
 
-const List = () => {
+const columnCount = 3;
+const rowCount = Math.ceil(ITEMS.length / columnCount);
+
+const Grid = () => {
   const [items, setItems] = useState(ITEMS);
   const [, drop] = useDrop({ accept: ItemTypes.ITEM });
 
@@ -31,11 +33,15 @@ const List = () => {
     };
   };
 
-  const Row = ({ index, style }) => {
-    const item = items[index];
+  const Cell = ({ columnIndex, rowIndex, style }) => {
+    const dataIndex = rowIndex * columnCount + columnIndex;
+
+    if (dataIndex >= items.length) return null;
+
+    const item = items[dataIndex];
 
     return (
-      <div key={index} style={style} className="post">
+      <div key={dataIndex} style={style} className="post">
         <Item
           key={item.id}
           id={`${item.id}`}
@@ -49,16 +55,18 @@ const List = () => {
 
   return (
     <div ref={drop} style={{ border: "2px solid red", padding: "5px" }}>
-      <FixedSizeList
-        itemCount={items.length}
-        itemSize={50}
+      <FixedSizeGrid
+        columnCount={columnCount}
+        rowCount={rowCount}
+        columnWidth={150}
+        rowHeight={60}
         height={290}
-        width={250}
+        width={700}
       >
-        {Row}
-      </FixedSizeList>
+        {Cell}
+      </FixedSizeGrid>
     </div>
   );
 };
 
-export default List;
+export default Grid;
